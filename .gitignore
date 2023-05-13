@@ -1,0 +1,14 @@
+# eclipse specific
+/workspace
+bin/
+target/
+state/
+*.local.launch
+Copy of *.launch
+*~
+~*.docx
+~*.pptx
+com.chronon.sb.browser.launcher.prefs
+Corel Auto-Preserve/
+.DS_Store
+.tycho-consumer-pom.xml
