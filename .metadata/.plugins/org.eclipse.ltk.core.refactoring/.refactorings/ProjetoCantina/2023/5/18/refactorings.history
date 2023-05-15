@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;readAllData&apos; to &apos;ReadAllData&apos;&#x0A;- Original project: &apos;ProjetoCantina&apos;&#x0A;- Original element: &apos;readAllData&apos;&#x0A;- Renamed element: &apos;ReadAllData&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;readAllData&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{readAllData.java[readAllData" matchStrategy="1" name="ReadAllData" qualified="false" references="true" similarDeclarations="false" stamp="1683212040823" textual="false" version="1.0"/>
-</session>

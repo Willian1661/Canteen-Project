@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+/home/willian/Desktop/exercios_java/projeto-cantina/.metadata/.plugins/org.eclipse.jdt.core
-1402089441.index
-2131985469.index
-3956583493.index
-1865797976.index
