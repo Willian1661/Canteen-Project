@@ -17,8 +17,8 @@ public class Main {
 //		updateData();
 
 //		getNumberOfUsers();
-//		ReadAllDataFrom rad = new ReadAllDataFrom();
-//		rad.getAllDataFrom("users");
+		ReadAllDataFrom rad = new ReadAllDataFrom();
+		rad.getAllDataFrom("users");
 //
 //		GetTablesLenth gtl = new GetTablesLenth();
 //		gtl.getTablesLenth();

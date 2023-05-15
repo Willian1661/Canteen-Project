@@ -8,7 +8,7 @@ public class DbConnection {
 		Connection con = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:alunodb.db");
+			con = DriverManager.getConnection("jdbc:sqlite:dataBase/dataBasedb.db");
 			System.out.println("Connected\n");
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e+" Couldn't connect");
