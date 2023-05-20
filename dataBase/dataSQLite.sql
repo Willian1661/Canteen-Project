@@ -64,23 +64,25 @@
 
 
 -- .tables users
--- SELECT * FROM users;
+SELECT * FROM users;
 
--- -- .tables canteens
--- SELECT * FROM canteens;
+-- .tables canteens
+SELECT * FROM canteens;
 
--- -- .tables user_order
--- SELECT * from user_order;
+-- .tables user_order
+SELECT * from user_order;
 
--- -- .tables payMethods
--- SELECT * from payMethods;
+-- .tables payMethods
+SELECT * from payMethods;
 
--- -- .tables menu_canteens
--- SELECT * from menu_canteens;
-SELECT 
-    Name
-FROM 
-    sqlite_schema
-WHERE 
-    type ='table' AND 
-    name NOT LIKE 'sqlite_%';
+-- .tables menu_canteens
+SELECT * from menu_canteens;
+-- SELECT 
+--     Name
+-- FROM 
+--     sqlite_schema
+-- WHERE 
+--     type ='table' AND 
+--     name NOT LIKE 'sqlite_%';
+
+-- PRAGMA table_info(users);
