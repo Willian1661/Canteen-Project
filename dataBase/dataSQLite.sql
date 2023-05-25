@@ -85,4 +85,8 @@ SELECT * from menu_canteens;
 --     type ='table' AND 
 --     name NOT LIKE 'sqlite_%';
 
--- PRAGMA table_info(users);
+PRAGMA table_info(users);
+
+-- CREATE TABLE usertest(texto TEXT);
+-- INSERT INTO usertest VALUES("testfoo");
+SELECT * FROM usertest;

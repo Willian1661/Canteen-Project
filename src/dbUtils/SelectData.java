@@ -1,7 +1,7 @@
 package dbUtils;
 
-public class GetData {
-	public GetData() {
+public class SelectData {
+	public SelectData() {
 	};
 
 	public void getData(String... arguments) {

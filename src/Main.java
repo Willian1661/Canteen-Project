@@ -4,62 +4,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 //import dbUtils.CreateMenu;
 import dbUtils.DbConnection;
-import dbUtils.GetData;
-import dbUtils.GetTables;
-import dbUtils.ReadAllDataFrom;
-import dbUtils.ReadRow;
+import dbUtils.SelectData;
+import dbUtils.SelectTables;
+import dbUtils.SelectAllDataFrom;
+import dbUtils.SelectRow;
 import dbUtils.InsertData;
-
+import dbUtils.UpdateData;
 public class Main {
 
 	public static void main(String[] args) {
-//		DbConnection.connect();
-
-//		readAllData();
-
-//		readSpecificRow({'*'});
-
-//		insertData("jose", "jose@gmail.com");
-
-//		updateData();
-
-//		getNumberOfUsers();
-//		ReadAllDataFrom rad = new ReadAllDataFrom();
-//		rad.getAllDataFrom("users");
-////
-//		GetTables gtl = new GetTables();
-//		gtl.getTablesLenth();
+		SelectAllDataFrom rad = new SelectAllDataFrom();
+		SelectTables gtl = new SelectTables();
+		SelectRow rn = new SelectRow();
+		InsertData id = new InsertData();
+		UpdateData ud = new UpdateData();
 		
-//		ReadRow rn = new ReadRow();
-//		rn.readRow("*", "users", "ID", "2");
+//		ud.updateData(new String[] {"usertest","texto","texto"},new String[] {"testfoo","testbar"});
 
-//		InsertData id = new InsertData();
-//		id.insertData("table", "col1", "col2");
+		getNumberOfUsers();
+		
+//		rad.SelectAllDataFrom("users");
+
+//		gtl.getTables();
+		
+//		rn.selectRow(new String[] {"*","users","ID","1"});
+
+//		id.insertData(new String[] {"usertest","issofoo"},new String[] {"?"});
 	}
-	private static void updateData() {
-		Connection con = DbConnection.connect();
-		PreparedStatement ps = null;
-
-		try {
-			String sql = "UPDATE users set name = ? WHERE email = ?";
-			ps = con.prepareStatement(sql);
-			ps.setString(1, "Lucas@gmail.com");
-			ps.setString(2, "Lucas");
-			ps.execute();
-			System.out.println("Data has been executed");
-
-		} catch (SQLException e) {
-			System.out.println(e.toString());
-		} finally {
-			try {
-				ps.close();
-				con.close();
-			} catch (SQLException e) {
-				System.out.println(e.toString());
-			}
-		}
-	}
-
 	private static void deleteRow() {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;

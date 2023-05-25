@@ -1,37 +1,39 @@
 package dbUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import security.SecureHash;
 
-public class ReadAllDataFrom {
-	public ReadAllDataFrom() {
+public class SelectAllDataFrom {
+	public SelectAllDataFrom() {
 	};
 
-	public static void getAllDataFrom(String table) {
+	public static void SelectAllDataFrom(String table) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		SecureHash sh = new SecureHash();
-		GetData gd = new GetData();
+		SelectData gd = new SelectData();
+		String columnName, columnContent;
 
 		try {
+			DatabaseMetaData metaData = con.getMetaData();
 			String sql = "SELECT * FROM " + table;
 			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			rs = metaData.getColumns(null, null, table, null);
 			System.out.println("ALL users");
-
 			while (rs.next()) {
+				columnName = rs.getString("COLUMN_NAME");
+				columnContent = ps.executeQuery().getString(columnName);
 
-				
-				gd.getData("ID: "+rs.getString("ID"),
-						" | Name: "+rs.getString("Name"),
-						" | Contact: "+rs.getString("Contact"),
-						" | Registration: "+rs.getString("Registration"),
-						" | PassWord: "+rs.getString("PassWord")
-						);
-				
+				if (columnName.equals("PassWord")) {
+					columnContent = sh.secureHash(columnContent);
+				}
+				gd.getData(columnName + ": " + columnContent + " | ");
+
 			}
 		} catch (SQLException e) {
 			System.out.println(e.toString());

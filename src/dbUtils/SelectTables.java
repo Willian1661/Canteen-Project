@@ -4,15 +4,15 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class GetTables {
-	public GetTables() {
+public class SelectTables {
+	public SelectTables() {
 	};
 
 	public static void getTables() {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		GetData gd = new GetData();
+		SelectData gd = new SelectData();
 		int lgth = 0;
 		try {
 			String sql = "SELECT \n"
