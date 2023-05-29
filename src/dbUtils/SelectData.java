@@ -9,4 +9,12 @@ public class SelectData {
 			System.out.print(arg);
 		}
 	}
+
+	public String returnData(String... arguments) {
+		String args = "";
+		for (String arg : arguments) {
+			args += arg;
+		}
+		return args;
+	}
 }

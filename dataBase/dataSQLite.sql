@@ -64,29 +64,31 @@
 
 
 -- .tables users
-SELECT * FROM users;
+-- SELECT * FROM users;
 
 -- .tables canteens
-SELECT * FROM canteens;
+-- SELECT * FROM canteens;
 
 -- .tables user_order
-SELECT * from user_order;
+-- SELECT * from user_order;
 
 -- .tables payMethods
-SELECT * from payMethods;
+-- SELECT * from payMethods;
 
 -- .tables menu_canteens
-SELECT * from menu_canteens;
+-- SELECT * from menu_canteens;
 -- SELECT 
---     Name
+--     name
 -- FROM 
 --     sqlite_schema
 -- WHERE 
 --     type ='table' AND 
 --     name NOT LIKE 'sqlite_%';
 
-PRAGMA table_info(users);
+-- PRAGMA table_info(users);
 
 -- CREATE TABLE usertest(texto TEXT);
 -- INSERT INTO usertest VALUES("testfoo");
-SELECT * FROM usertest;
+-- SELECT * FROM usertest;
+
+.tables
