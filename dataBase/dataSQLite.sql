@@ -91,4 +91,4 @@
 -- INSERT INTO usertest VALUES("testfoo");
 -- SELECT * FROM usertest;
 
-.tables
+-- .tables

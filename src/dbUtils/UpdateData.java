@@ -8,12 +8,12 @@ public class UpdateData {
 	public UpdateData() {
 	};
 
-	public static void updateData(String[] statement, String[] values) {
+	public UpdateData(String[] statement, String[] values) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 
 		try {
-			String sql = "UPDATE " + statement[0] + " SET " + statement[1] + " = \"" + values[0] + "\" WHERE "+ statement[2] + " IS ?";
+			String sql = String.format("UPDATE %s SET %s = \" %s \" WHERE %s IS ?",statement[0],statement[1],values[0],statement[2]);
 			ps = con.prepareStatement(sql);
 			ps.setString(1, values[1]);
 			ps.execute();

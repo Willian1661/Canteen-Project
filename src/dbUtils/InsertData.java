@@ -10,7 +10,7 @@ public class InsertData {
 	public InsertData() {
 	};
 
-	public void insertData(String[] values, String[] interrogation) {
+	public InsertData(String[] values, String[] interrogation) {
 
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
@@ -23,7 +23,7 @@ public class InsertData {
 				Interrogation += (interrogation[i] + ",");
 			}
 
-			String sql = "INSERT INTO " + values[0] + " VALUES(" + rae.removeLastChar(Interrogation) + ");";
+			String sql = String.format("INSERT INTO %s VALUES( %s );",values[0],rae.removeLastChar(Interrogation));
 			ps = con.prepareStatement(sql);
 
 			for (int i = 1; i <= values.length-1; i++) {

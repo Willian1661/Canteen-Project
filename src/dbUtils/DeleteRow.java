@@ -8,12 +8,12 @@ public class DeleteRow {
 	public DeleteRow() {
 	};
 
-	public static void deleteRow(String[] statement, String[] value) {
+	public DeleteRow(String[] statement, String[] value) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 
 		try {
-			String sql = "DELETE FROM "+statement[0]+" WHERE "+statement[1]+" = ?";
+			String sql = String.format("DELETE FROM %s WHERE %s = ?",statement[0],statement[1]);
 			ps = con.prepareStatement(sql);
 			ps.setString(1, value[0]);
 			ps.execute();

@@ -9,15 +9,16 @@ public class SelectTables {
 	public SelectTables() {
 	};
 
-	public static void getTables(String statement) {
+	public SelectTables(String action, String statement) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		SelectData gd = new SelectData();
 		int lgth = 0;
+
 		try {
-			String sql = "SELECT \n" + statement + "\n" + "FROM \n" + "sqlite_schema\n" + "WHERE \n"
-					+ "    type ='table' AND \n" + "    name NOT LIKE 'sqlite_%';";
+			String sql = "SELECT " + statement
+					+ " FROM sqlite_schema WHERE type IS 'table' AND Name NOT LIKE 'sqlite_%'";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
@@ -25,7 +26,17 @@ public class SelectTables {
 
 			while (rs.next()) {
 
-				gd.returnData(rs.getString("Name") + "\n");
+				switch (action) {
+				case "get":
+					gd.getData(rs.getString("Name") + "\n");
+					break;
+				case "return":
+					gd.returnData(rs.getString("Name") + "\n");
+					break;
+				default:
+					System.out.println("something went wrong");
+				
+				}
 
 				lgth++;
 			}
@@ -43,35 +54,5 @@ public class SelectTables {
 			}
 		}
 
-	}
-
-	public static void returnTables(String statement) {
-		Connection con = DbConnection.connect();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		SelectData gd = new SelectData();
-		try {
-			String sql = "SELECT \n" + statement + "\n" + "FROM \n" + "sqlite_schema\n" + "WHERE \n"
-					+ "    type ='table' AND \n" + "    name NOT LIKE 'sqlite_%';";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-
-			System.out.println("\nTABLES Name:");
-
-			while (rs.next()) { 
-
-				gd.getData(rs.getString("Name")+"\n");
-			}
-		} catch (SQLException e) {
-			System.out.println(e.toString());
-		} finally {
-			try {
-				ps.close();
-				rs.close();
-				con.close();
-			} catch (SQLException e) {
-				System.out.println(e.toString());
-			}
-		}
 	}
 }

@@ -11,7 +11,7 @@ public class SelectRow {
 	public SelectRow() {
 	};
 
-	public void selectRow(String[] statement) {
+	public SelectRow(String[] statement) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -21,7 +21,7 @@ public class SelectRow {
 
 		try {
 			DatabaseMetaData metaData = con.getMetaData();
-			String sql = "SELECT " + statement[0] + " FROM " + statement[1] + " WHERE " + statement[2] + " = ?";
+			String sql = String.format("SELECT %s FROM %s WHERE %s = ?",statement[0],statement[1],statement[2]);
 			ps = con.prepareStatement(sql);
 			ps.setString(1, statement[3]);
 			rs = metaData.getColumns(null, null, statement[1], null);

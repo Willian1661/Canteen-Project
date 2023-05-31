@@ -1,50 +1,39 @@
 package dbUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import security.SecureHash;
-import dbUtils.SelectTables;
+import view.Base;
+import javax.swing.*;
 
-public class SelectAllDataFrom {
-	// constructor
-	public SelectAllDataFrom() {
-	};
+public class SelectAllDataFrom extends Base {
 
-	//method
-	public static void SelectAllDataFrom(String table) {
+	public SelectAllDataFrom(String table) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ResultSet rsMeta = null;
+		StringBuilder mensage = new StringBuilder();
 		SecureHash sh = new SecureHash();
 		SelectData gd = new SelectData();
 		String columnName, columnContent;
-		SelectTables gtl = new SelectTables();
-		int index = 0;
-		String tablesName = "";
+		String tablesName = null;
 
 		switch (table) {
 		case "*":
 			try {
 				DatabaseMetaData metaData = con.getMetaData();
-				String sqlTables = "SELECT \n" + "Name \n" + "FROM \n" + "sqlite_schema\n" + "WHERE \n"
-						+ "    type ='table' AND \n" + "    name NOT LIKE 'sqlite_%';";
+				String sqlTables = "SELECT Name FROM sqlite_schema WHERE type = 'table' AND Name NOT LIKE 'sqlite_%';";
 				ps = con.prepareStatement(sqlTables);
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					index++;
-
 					tablesName = gd.returnData(rs.getString("Name"));
 
 					String sql = "SELECT * FROM " + tablesName;
 					ps = con.prepareStatement(sql);
 					rsMeta = metaData.getColumns(null, null, tablesName, null);
-					
+
 					System.out.println("\n\nTABLE NAME:" + tablesName);
-					
+
 					while (rsMeta.next()) {
 						columnName = rsMeta.getString("COLUMN_NAME");
 						columnContent = ps.executeQuery().getString(columnName);
@@ -53,8 +42,10 @@ public class SelectAllDataFrom {
 							columnContent = sh.secureHash(columnContent);
 						}
 						gd.getData(columnName + ": " + columnContent + " | ");
+//						mensage.append(rootPaneCheckingEnabled).append(gd.returnData(columnName + ": " + columnContent + " | "));
 					}
 				}
+//				JOptionPane.showMessageDialog(null, mensage);
 			} catch (SQLException e) {
 				System.out.println(e.toString());
 			} finally {
@@ -72,11 +63,11 @@ public class SelectAllDataFrom {
 		default:
 			try {
 				DatabaseMetaData metaData = con.getMetaData();
-				String sql = "SELECT * FROM " + table;
+				String sql = String.format("SELECT * FROM %s", table);
 				ps = con.prepareStatement(sql);
 				rs = metaData.getColumns(null, null, table, null);
 
-				System.out.println("ALL users");
+				System.out.println("ALL COLUMNS FROM " + table);
 				while (rs.next()) {
 					columnName = rs.getString("COLUMN_NAME");
 					columnContent = ps.executeQuery().getString(columnName);
@@ -85,8 +76,10 @@ public class SelectAllDataFrom {
 						columnContent = sh.secureHash(columnContent);
 					}
 					gd.getData(columnName + ": " + columnContent + " | ");
+//					mensage.append(gd.returnData(columnName + ": " + columnContent + " | "));
 
 				}
+//				JOptionPane.showMessageDialog(null, mensage);
 
 			} catch (SQLException e) {
 				System.out.println("TABLE NOT FOUND!");

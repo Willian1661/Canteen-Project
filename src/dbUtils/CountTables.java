@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SelectCountTables {
-	public SelectCountTables() {
+public class CountTables {
+	public CountTables() {
 	};
 
-	public static void selectCountTables(String table, String value) {
+	public CountTables(String table, String value) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT count("+value+") FROM "+table;
+			String sql = String.format("SELECT count(%s) FROM %s",value,table);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
