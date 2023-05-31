@@ -1,13 +1,14 @@
+package dbUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class CreateMenu {
-	protected CreateMenu() {
+	public CreateMenu() {
 	};
 
-	protected void createMenu(String canteenName) {
+	public static void createMenu(String canteenName) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

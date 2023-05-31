@@ -1,32 +1,27 @@
+package dbUtils;
+
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class GetTablesLenth {
-	protected GetTablesLenth() {
+public class CountTables {
+	public CountTables() {
 	};
 
-	protected void getTablesLenth() {
+	public CountTables(String table, String value) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int lgth = 0;
+
 		try {
-			String sql = "SELECT \n"
-					+ "    Name\n"
-					+ "FROM \n"
-					+ "    sqlite_schema\n"
-					+ "WHERE \n"
-					+ "    type ='table' AND \n"
-					+ "    name NOT LIKE 'sqlite_%';";
+			String sql = String.format("SELECT count(%s) FROM %s",value,table);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				lgth++;
-			}
-			System.out.println("\nTABLES LENGTH: "+lgth);
+			int size = rs.getInt(1);
+			System.out.println("You have " + size + " " +table);
+			
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 		} finally {

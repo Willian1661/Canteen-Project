@@ -1,15 +1,16 @@
+package security;
 import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
 
 public class SecureHash {
-	protected SecureHash(){};
+	public SecureHash(){};
 	
-	protected String secureHash(String psw) {
-		/* Plain-text password initialization. */
+	public String secureHash(String psw) {
+
 		String password = psw;
 		String encryptedpassword = null;
 		try {
-			/* MessageDigest instance for MD5. */
+
 			MessageDigest m = MessageDigest.getInstance("MD5");
 
 			/* Add plain-text password bytes to digest using MD5 update() method. */
