@@ -62,13 +62,18 @@
 -- (2,1,'cafe',200),
 -- (3,1,'tapioca amanteigada',350);
 
+-- INSERT INTO menu_canteens (Canteen_ID,Name,Value) VALUES 
+-- (1,'torta de frango',700),
+-- (1,'torta de carne do sol',950),
+-- (1,'macarronada',900),
+-- (1,'torresminho',350),
+-- (1,'cappuccino',450),
+-- (1,'suco natural',250);
 
 -- .tables users
 -- SELECT * FROM users;
-
 -- .tables canteens
 -- SELECT * FROM canteens;
-
 -- .tables user_order
 -- SELECT * from user_order;
 
@@ -77,6 +82,7 @@
 
 -- .tables menu_canteens
 -- SELECT * from menu_canteens;
+-- SELECT count(ID) FROM menu_canteens;
 -- SELECT 
 --     name
 -- FROM 
@@ -86,9 +92,3 @@
 --     name NOT LIKE 'sqlite_%';
 
 -- PRAGMA table_info(users);
-
--- CREATE TABLE usertest(texto TEXT);
--- INSERT INTO usertest VALUES("testfoo");
--- SELECT * FROM usertest;
-
--- .tables

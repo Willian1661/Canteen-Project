@@ -3,7 +3,6 @@ package dbUtils;
 import java.sql.*;
 import security.SecureHash;
 import view.Base;
-import javax.swing.*;
 
 public class SelectAllDataFrom extends Base {
 
@@ -12,7 +11,6 @@ public class SelectAllDataFrom extends Base {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ResultSet rsMeta = null;
-		StringBuilder mensage = new StringBuilder();
 		SecureHash sh = new SecureHash();
 		SelectData gd = new SelectData();
 		String columnName, columnContent;
@@ -42,10 +40,9 @@ public class SelectAllDataFrom extends Base {
 							columnContent = sh.secureHash(columnContent);
 						}
 						gd.getData(columnName + ": " + columnContent + " | ");
-//						mensage.append(rootPaneCheckingEnabled).append(gd.returnData(columnName + ": " + columnContent + " | "));
+						gd.returnData(columnName + ": " + columnContent + " | ");
 					}
 				}
-//				JOptionPane.showMessageDialog(null, mensage);
 			} catch (SQLException e) {
 				System.out.println(e.toString());
 			} finally {
@@ -76,10 +73,8 @@ public class SelectAllDataFrom extends Base {
 						columnContent = sh.secureHash(columnContent);
 					}
 					gd.getData(columnName + ": " + columnContent + " | ");
-//					mensage.append(gd.returnData(columnName + ": " + columnContent + " | "));
-
+					gd.returnData(columnName + ": " + columnContent + " | ");
 				}
-//				JOptionPane.showMessageDialog(null, mensage);
 
 			} catch (SQLException e) {
 				System.out.println("TABLE NOT FOUND!");

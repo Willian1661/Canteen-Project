@@ -23,7 +23,8 @@ public class InsertData {
 				Interrogation += (interrogation[i] + ",");
 			}
 
-			String sql = String.format("INSERT INTO %s VALUES( %s );",values[0],rae.removeLastChar(Interrogation));
+			String sql = String.format("INSERT INTO %s (Name, Contact, Registration,PassWord) VALUES( %s );",values[0],rae.removeLastChar(Interrogation));
+			System.out.println(sql);
 			ps = con.prepareStatement(sql);
 
 			for (int i = 1; i <= values.length-1; i++) {
