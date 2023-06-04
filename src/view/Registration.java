@@ -1,51 +1,46 @@
 package view;
 
-import javax.swing.*;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 public class Registration extends Base {
-	private static String palavra = "";
-
-	public static String getPalavra() {
-		return Registration.palavra;
-	}
-
-	public static void setPalavra(String palavra) {
-		Registration.palavra = palavra;
-	}
 
 	public Registration() {
-		super("WELCOME!", 400, 400);
+		super("cadastro de usuario",300,200);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		JPanel panel = (JPanel) this.getContentPane();
+		panel.setLayout(new FlowLayout());
 
-		JPanel section = (JPanel) this.getContentPane();
-		section.setLayout(new FlowLayout());
+		JLabel nameLabel = new JLabel("Nome:");
+		nameLabel.setBounds(10, 20, 80, 25);
+		panel.add(nameLabel);
 
-		JButton btn1 = new JButton("Informar palavra");
-		JButton btn2 = new JButton("Adivinhar");
+		JTextField nameText = new JTextField(20);
+		nameText.setBounds(100, 20, 165, 25);
+		panel.add(nameText);
 
-		btn1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String valor = JOptionPane.showInputDialog("Informe a palavra");
-				setPalavra(valor);
-			}
-		});
+		JLabel emailLabel = new JLabel("Email:");
+		emailLabel.setBounds(10, 50, 80, 25);
+		panel.add(emailLabel);
 
-		btn2.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("new window!");
-			}
-		});
+		JTextField emailText = new JTextField(20);
+		emailText.setBounds(100, 50, 165, 25);
+		panel.add(emailText);
 
-		section.add(btn1);
-		section.add(btn2);
+		JLabel passwordLabel = new JLabel("Senha:");
+		passwordLabel.setBounds(10, 80, 80, 25);
+		panel.add(passwordLabel);
+
+		JPasswordField passwordText = new JPasswordField(20);
+		passwordText.setBounds(100, 80, 165, 25);
+		panel.add(passwordText);
+
+		JButton registerButton = new JButton("Cadastrar");
+		registerButton.setBounds(100, 120, 120, 25);
+		panel.add(registerButton);
 
 		this.setVisible(true);
 	}
-
 }
