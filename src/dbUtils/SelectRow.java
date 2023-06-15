@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 import security.SecureHash;
 import java.sql.DatabaseMetaData;
 
@@ -53,7 +56,8 @@ public class SelectRow {
 				System.out.println(e.toString());
 			}
 		}
-	}
+	};
+	
 	public String selectRow(String[] statement) {
 		Connection con = DbConnection.connect();
 		PreparedStatement ps = null;
@@ -73,6 +77,7 @@ public class SelectRow {
 
 			if (ps.executeQuery().getString(columnName) == null) {
 				System.out.println("table or column not found");
+				JOptionPane.showMessageDialog(null, "User not found ");
 			} else {
 				while (rs.next()) {
 					columnName = rs.getString("COLUMN_NAME");

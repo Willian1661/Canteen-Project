@@ -53,7 +53,7 @@ public class SelectAllDataFrom extends Base {
 				} catch (SQLException e) {
 					System.out.println(e.toString());
 				}
-			}
+			};
 
 			break;
 
@@ -88,10 +88,10 @@ public class SelectAllDataFrom extends Base {
 					System.out.println(e.toString());
 				}
 
-			}
+			};
 			break;
-		}
+		};
 		// method
-	}
+	};
 	// class
 }
