@@ -61,8 +61,6 @@ public class MainPage extends Base {
 					end_name_statement = userRow.indexOf(" | C");
 				}
 
-
-
 				int pass_word_index = userRow.indexOf("d: ") + 3;
 
 				String bdUserName = userRow.substring(start_name_statement, end_name_statement);
@@ -71,7 +69,7 @@ public class MainPage extends Base {
 				String bdUserContact = userRow.substring(start_statement, end_statement);
 				String bdPassWord = userRow.substring(pass_word_index, userRow.length() - 3);
 
-				if (Registration.equals(bdUserContact) || Registration.equals(bdUserResgistration) && PasswordField.equals(bdPassWord)) {
+				if ((Registration.equals(bdUserContact) || Registration.equals(bdUserResgistration)) && PasswordField.equals(bdPassWord)) {
 					
 					JOptionPane.showMessageDialog(null, "Login Successful");
 					

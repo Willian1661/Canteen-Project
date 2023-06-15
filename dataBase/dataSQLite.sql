@@ -71,17 +71,17 @@
 -- (1,'suco natural',250);
 
 -- .tables users
--- SELECT * FROM users;
+SELECT * FROM users;
 -- .tables canteens
--- SELECT * FROM canteens;
+SELECT * FROM canteens;
 -- .tables user_order
--- SELECT * from user_order;
+SELECT * from user_order;
 
 -- .tables payMethods
--- SELECT * from payMethods;
+SELECT * from payMethods;
 
 -- .tables menu_canteens
--- SELECT * from menu_canteens;
+SELECT * from menu_canteens;
 -- SELECT count(ID) FROM menu_canteens;
 -- SELECT 
 --     name
